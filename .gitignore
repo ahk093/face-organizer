@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# macOS
+.DS_Store
+._*
+
+# Checkpoints and data (large files)
+*.pkl
+checkpoint.pkl
+fast_checkpoint.pkl
+
+# Test outputs
+test_results/
+
+# Lock files
+*.lock
+.fast_organizer.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Output directories (user-specific)
+# _Kisiler/
+# _yuz_yok/
+# _Export/
