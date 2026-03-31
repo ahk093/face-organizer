@@ -42,17 +42,12 @@ _yuz_yok/               # Photos without faces
 
 ## Installation
 
-### Prerequisites
-
-- Python 3.8+
-- macOS, Linux, or Windows
-- ~2GB disk space for AI models
 
 ### Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/face-organizer.git
+git clone https://github.com/ahk093/face-organizer.git
 cd face-organizer
 
 # Create virtual environment (recommended)
@@ -93,13 +88,6 @@ Share someone's photos with them:
 # Creates: _Export/John/ with actual photo copies (not symlinks)
 ```
 
-## Performance
-
-Tested on MacBook Pro M1 with 89,000 photos:
-- **Speed**: ~3-5 photos/second
-- **Time**: ~6 hours total
-- **Result**: 24,000+ unique person clusters
-- **Accuracy**: ~90% (some siblings grouped together)
 
 ## Configuration
 
@@ -123,14 +111,6 @@ Tested on MacBook Pro M1 with 89,000 photos:
 - Same person at very different ages might be split
 - Low quality or side-profile faces may not be detected
 - Windows: Symbolic links may require admin privileges or Developer Mode enabled
-
-## Roadmap
-
-- [ ] Web UI for reviewing and merging clusters
-- [ ] Manual cluster merge/split tool
-- [ ] GPU acceleration (CUDA/Metal)
-- [ ] Face naming with automatic propagation
-- [ ] Duplicate photo detection
 
 ## Contributing
 
