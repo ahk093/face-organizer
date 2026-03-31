@@ -376,7 +376,7 @@ def create_face_thumbnail(face_data: Dict, person_dir: Path) -> bool:
         face_crop = img[y1:y2, x1:x2]
         face_rgb = cv2.cvtColor(face_crop, cv2.COLOR_BGR2RGB)
         face_pil = Image.fromarray(face_rgb)
-        face_pil.save(person_dir / "_YUZ.jpg", quality=85)
+        face_pil.save(person_dir / "_FACE.jpg", quality=85)
         return True
     except:
         return False
@@ -406,7 +406,7 @@ def organize_files(clusters: Dict[int, List[Dict]], no_face_files: List[str],
     thumbnails = 0
     
     for new_id, (old_id, faces) in enumerate(tqdm(sorted_clusters, desc="Organize")):
-        person_dir = output_dir / f"Kisi_{new_id:03d}"
+        person_dir = output_dir / f"Person_{new_id:03d}"
         person_dir.mkdir(exist_ok=True)
         
         best_face = max(faces, key=lambda f: f.get('score', 0))
@@ -458,7 +458,7 @@ def print_summary(clusters, no_face_files, error_files):
     sorted_clusters = sorted(clusters.items(), key=lambda x: len(set(f['path'] for f in x[1])), reverse=True)
     for i, (cid, faces) in enumerate(sorted_clusters[:10]):
         photo_count = len(set(f['path'] for f in faces))
-        print(f"  Kisi_{i:03d}: {len(faces)} faces, {photo_count} photos")
+        print(f"  Person_{i:03d}: {len(faces)} faces, {photo_count} photos")
     
     print("="*60)
 
@@ -477,7 +477,7 @@ Examples:
     parser.add_argument('path', help='Path to photos directory')
     parser.add_argument('--dirs', help='Comma-separated list of subdirectories to scan (default: scan all)')
     parser.add_argument('--eps', type=float, default=0.5, help='Clustering threshold (default: 0.5, lower=stricter)')
-    parser.add_argument('--output', help='Output directory name (default: _Kisiler)')
+    parser.add_argument('--output', help='Output directory name (default: _People)')
     
     args = parser.parse_args()
     
@@ -489,8 +489,8 @@ Examples:
     project_dir = base_dir / "_face_organizer"
     project_dir.mkdir(exist_ok=True)
     
-    output_dir = base_dir / (args.output or "_Kisiler")
-    no_face_dir = base_dir / "_yuz_yok"
+    output_dir = base_dir / (args.output or "_People")
+    no_face_dir = base_dir / "_no_faces"
     checkpoint_file = project_dir / "checkpoint.pkl"
     lock_file = project_dir / ".lock"
     

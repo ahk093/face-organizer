@@ -17,24 +17,24 @@ Face Organizer scans your entire photo library, detects faces using state-of-the
 - **Checkpoint System**: Stop anytime and resume later - progress is saved every 100 photos
 - **Symbolic Links**: Organizes photos without duplicating files (saves disk space)
 - **Date Sorting**: Photos are sorted chronologically within each person's folder
-- **Thumbnail Preview**: Each person folder includes a `_YUZ.jpg` face thumbnail
+- **Thumbnail Preview**: Each person folder includes a `_FACE.jpg` face thumbnail
 - **No-Face Organization**: Photos without faces are organized by source folder
 - **Export Tool**: Export any person's photos to share with them
 
 ### Sample Output
 
 ```
-_Kisiler/
-├── Kisi_000/           # Person with most photos
-│   ├── _YUZ.jpg        # Face thumbnail
+_People/
+├── Person_000/           # Person with most photos
+│   ├── _FACE.jpg         # Face thumbnail
 │   ├── 2019-03-15_IMG_1234.jpg → /original/path/IMG_1234.jpg
 │   ├── 2020-07-22_photo.jpg → /original/path/photo.jpg
 │   └── ...
-├── Kisi_001/
+├── Person_001/
 │   └── ...
 └── ...
 
-_yuz_yok/               # Photos without faces
+_no_faces/               # Photos without faces
 ├── DCIM/
 ├── WhatsApp Images/
 └── ...
@@ -84,7 +84,7 @@ The script will:
 Share someone's photos with them:
 
 ```bash
-./export_person.sh Kisi_001 John
+python export_person.py /path/to/photos Person_001 John
 # Creates: _Export/John/ with actual photo copies (not symlinks)
 ```
 
